@@ -6,19 +6,17 @@ import { Show } from 'src/app/show';
 @Component({
   selector: 'app-homepage',
   templateUrl: './homepage.component.html',
-  styleUrls: ['./homepage.component.scss']
+  styleUrls: ['./homepage.component.scss'],
 })
-
-
 export class HomepageComponent {
-query: string = '';
-shows: any[] = [];
+  query: string = '';
+  shows: any[] = [];
 
-  constructor (private APIcallsService: APIcallsService ) { }
+  constructor(private APIcallsService: APIcallsService) {}
 
-   search(){
-     this.APIcallsService.searchShows(this.query).subscribe((data: any) => {
-         this.shows = [data as Show]; // metti l'oggetto ShowData in un array
-       });
-     };
+  search() {
+    this.APIcallsService.searchShows(this.query).subscribe((data: any) => {
+      this.shows = [data as Show]; // metti l'oggetto ShowData in un array
+    });
+  }
 }
