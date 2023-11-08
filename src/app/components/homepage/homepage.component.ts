@@ -9,7 +9,7 @@ import { Show } from 'src/app/show.model';
   styleUrls: ['./homepage.component.scss'],
 })
 export class HomepageComponent {
-  query: string = '';
+  query: string = 'who';
   shows: Show[] = [];
   queryModified: string | null = '';
 

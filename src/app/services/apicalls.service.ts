@@ -8,6 +8,7 @@ import { Observable, tap } from 'rxjs';
 export class APIcallsService {
   constructor(private http: HttpClient) {}
 
+// chiamata per lista serie tv
   searchShows(query: string): Observable<any> {
     return this.http.get(`https://api.tvmaze.com/search/shows?q=${query}`).pipe(
       tap((data) => {
@@ -16,3 +17,8 @@ export class APIcallsService {
     );
   }
 }
+// ------------------------
+
+// chiamata per dettagli serie
+
+// ------------------------
