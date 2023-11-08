@@ -35,7 +35,7 @@
         required
       />
       <button
-        (click)="search()"
+        (click)="modifyQuery()"
         type="submit"
         class="text-white absolute right-2.5 bottom-2.5 bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
       >
@@ -44,10 +44,13 @@
     </div>
   </form>
 
-  <ul>
-    <li *ngFor="let show of shows">
-      <h3>{{ show?.name }}</h3>
-      <p>{{ show?.summary }}</p>
-    </li>
-  </ul>
+  <div *ngFor="let show of shows" class="container mx-2 my-4">
+    <div class="show-header flex flex-row">
+      <img [src]="show?.show?.image?.medium" />
+      <h3>{{ show?.show?.name }}</h3>
+      <h3 *ngIf="show?.show?.network?.name">
+        ({{ show?.show?.network?.name }})
+      </h3>
+    </div>
+  </div>
 </div>

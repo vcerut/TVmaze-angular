@@ -1,15 +1,18 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-
+import { Observable, tap } from 'rxjs';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class APIcallsService {
-  private apiUrl = 'https://api.tvmaze.com/search/shows';
+  constructor(private http: HttpClient) {}
 
-  constructor(private http: HttpClient) { }
-  searchShows(query: string) {
-    return this.http.get('${this.apiUrl}?q=${query}');
+  searchShows(query: string): Observable<any> {
+    return this.http.get(`https://api.tvmaze.com/search/shows?q=${query}`).pipe(
+      tap((data) => {
+        console.log('API Response:', data); // Aggiungi console.log per visualizzare la risposta
+      })
+    );
   }
 }
