@@ -1,1 +1,13 @@
-<p>show-details works!</p>
+<div class="container mx-auto my-6">
+    <div *ngIf="showDetails" class="flex flex-row mx-auto gap-3 justify-center content-center">
+        <div class="flex flex-col">
+        <h2 class="text-4xl font-thin">{{ showDetails.show.name }}</h2>
+            <img [src]="showDetails.show.image.medium">
+        </div>
+      <div class="flex flex-col">
+        {{showDetails.show.summary}}
+      </div>
+    </div>
+    
+    <a href="/home">Go back</a>
+</div>
