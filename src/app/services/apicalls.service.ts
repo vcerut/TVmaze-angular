@@ -46,8 +46,8 @@ export class APIcallsService {
         ended: show.ended || 0,
         officialSite: show.officialSite || '',
         schedule: {
-          time: '',
-          days: [],
+          time: show.schedule.time,
+          days: show.schedule.days,
         },
         rating: {
           average: 0,
@@ -55,13 +55,13 @@ export class APIcallsService {
         weight: 0,
         network: {
           id: 0,
-          name: '',
+          name: show.network.name,
           country: {
-            name: '',
+            name: show.network.country.name,
             code: '',
             timezone: '',
           },
-          officialSite: '',
+          officialSite: show.network.officialSite,
         },
         webChannel: 0,
         dvdCountry: 0,

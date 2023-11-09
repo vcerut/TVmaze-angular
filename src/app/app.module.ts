@@ -7,9 +7,11 @@ import { HomepageComponent } from './components/homepage/homepage.component';
 import { ShowDetailsComponent } from './components/show-details/show-details.component';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { NavbarComponent } from './components/navbar/navbar.component';
+import { FooterComponent } from './components/footer/footer.component';
 
 @NgModule({
-  declarations: [AppComponent, HomepageComponent, ShowDetailsComponent],
+  declarations: [AppComponent, HomepageComponent, ShowDetailsComponent, NavbarComponent, FooterComponent],
   imports: [BrowserModule, AppRoutingModule, FormsModule, HttpClientModule, ],
   providers: [],
   bootstrap: [AppComponent],

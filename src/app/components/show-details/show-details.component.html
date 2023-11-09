@@ -1,13 +1,31 @@
-<div class="container mx-auto my-6">
-    <div *ngIf="showDetails" class="flex flex-row mx-auto gap-3 justify-center content-center">
-        <div class="flex flex-col">
-        <h2 class="text-4xl font-thin">{{ showDetails.show.name }}</h2>
-            <img [src]="showDetails.show.image.medium">
-        </div>
-      <div class="flex flex-col">
-        {{showDetails.show.summary}}
-      </div>
+<div class="container mx-auto mt-10">
+  <div
+    *ngIf="showDetails"
+    class="grid grid-cols-6 grid-rows-5 flex-row mx-auto gap-3 justify-center content-center"
+    >
+    <h2 class="text-5xl font-thin col-start-2 row-start-1 row-span-1">
+      {{ showDetails.show.name }}
+    </h2>
+    <div class="grid col-span-1 col-start-2 row-start-2 row-span-3 flex-col">
+      <img [src]="showDetails.show.image.medium" />
     </div>
-    
-    <a href="/home">Go back</a>
+    <div class="grid flex-col col-span-2 row-span-1 row-start-2">
+      <p class="">{{ showDetails.show.summary }}</p>
+    </div>
+    <div class="grid col-span-1 col-start-5 row-start-2 row-span-3 bg-[#f7f7f7] p-5">
+      <h3 class="text-xl">
+        Show Info
+      </h3>
+      <p class="text-sm">
+        <b>Network: </b> {{showDetails.show.network.name}}({{showDetails.show.network.country.name}})
+      </p>
+      <p> <b>Schedule: </b> {{showDetails.show.schedule.days}} (~ {{showDetails.show.averageRuntime}} minutes) </p>
+      <p> <b>Status: </b> {{showDetails.show.status}} </p>
+      <p> <b>Show Type: </b> {{showDetails.show.type}} </p>
+      <p> <b>Genres: </b> {{showDetails.show.genres}} </p>
+      <p> <b>Official site: </b> <a href="{{showDetails.show.network.officialSite}}">{{showDetails.show.network.officialSite}}</a> </p>
+    </div>
+    <a href="/home" class="col-span-1 col-start-2 row-span-1 row-start-5 underline">Go back</a>
+  </div>
+
 </div>
