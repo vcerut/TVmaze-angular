@@ -20,6 +20,16 @@ export class ShowDetailsComponent implements OnInit {
     private route: ActivatedRoute
   ) {}
 
+  /**
+   * elimina tag tipo <p> dal summary
+   */
+  modifyJson() {
+    if (this.showDetails?.show?.summary) {
+      this.showDetails.show.summary = this.showDetails.show.summary.replace(/<\/?[A-Za-z]>/gi, "");
+    }
+  }
+  
+
   ngOnInit() {
     this.paramsSub = this.route.params.subscribe((params) => {
       const id = params['id'];
@@ -29,6 +39,7 @@ export class ShowDetailsComponent implements OnInit {
           console.log('API Response:', data);
           this.showDetails = data ? this.APIcallsService.transformShow(data) : undefined;
           console.log('showDetails:', this.showDetails);
+          this.modifyJson();
         }
       );
     });
