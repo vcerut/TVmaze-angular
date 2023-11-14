@@ -22,8 +22,9 @@ export class HomepageComponent {
   }
 
   modifyQuery() {
-    this.queryModified = this.query.toLowerCase(); // Modifica la variabile queryModified
-    this.queryModified = this.queryModified.replace(/ /g, '-'); // Sostituisci gli spazi con trattini
+    this.queryModified = this.query.toLowerCase();
+    this.queryModified = this.queryModified.replace(/ /g, '-');
     this.search(this.queryModified);
   }
+  
 }

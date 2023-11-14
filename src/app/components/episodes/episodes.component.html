@@ -1,0 +1,19 @@
+<!-- episodes.component.html -->
+
+    <h2>Episodes List</h2>
+    {{showId}}
+    
+    <ul>
+      <li *ngFor="let episode of showEpisodes">
+        <h3>{{ episode.name }}</h3>
+        <p>Season: {{ episode.season }}, Episode: {{ episode.number }}</p>
+        <p>Airdate: {{ episode.airdate }}, Airtime: {{ episode.airtime }}</p>
+        <p>Runtime: {{ episode.runtime }} minutes</p>
+        <p>Rating: {{ episode.rating.average }}</p>
+        <img [src]="episode.image.medium" alt="Episode Image" />
+        <p>{{ episode.summary }}</p>
+        <!-- Add more details as needed -->
+      </li>
+    </ul>
+
+  

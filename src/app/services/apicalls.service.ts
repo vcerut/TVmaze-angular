@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable, tap } from 'rxjs';
 import { Show } from '../show.model';
+import { ShowEpisode } from '../show-episode.model';
 import { map } from 'rxjs';
 
 @Injectable({
@@ -9,6 +10,13 @@ import { map } from 'rxjs';
 })
 export class APIcallsService {
   private showId: number = 0;
+
+  //chiamata per lista episodi
+  getEpisodesList(showId: number): Observable<ShowEpisode[]> {
+    const apiUrl = `https://api.tvmaze.com/shows/${showId}/episodes`;
+    return this.http.get<ShowEpisode[]>(apiUrl);
+  }
+    // ------------------------
 
   // chiamata per dettagli serie
   getShowDetails(showId: number): Observable<Show> {
@@ -22,11 +30,13 @@ export class APIcallsService {
   // chiamata per lista serie tv
   searchShows(query: string): Observable<any> {
     return this.http.get(`https://api.tvmaze.com/search/shows?q=${query}`).pipe(
-      tap((data) => {
-        console.log('API Response:', data); // Aggiungi console.log per visualizzare la risposta
-      })
+      tap(
+        (data) => console.log('API Response:', data),
+        (error) => console.error('API Error:', error)
+      )
     );
   }
+  
   // ------------------------
 
   transformShow(show: any) {
@@ -90,4 +100,35 @@ export class APIcallsService {
       },
     };
   }
+
+  transformEpisode (episode: any) {
+    return {
+      id: episode.id || 0,
+      url: episode.url || '',
+      name: episode.name || '',
+      season: episode.season || '',
+      number: episode.number || '',
+      type: episode.type || '',
+      airdate: episode.airdate || '',
+      airtime: episode.airtime || '',
+      airstamp: episode.airstamp || '',
+      runtime: episode.runtime || 0,
+      rating: {
+          average:episode.rating.average || 0
+      },
+      image: {
+          medium: episode.image.medium || '',
+          original: episode.image.original || ''
+      },
+      summary: episode.summary || '',
+      _links: {
+          self: {
+              href: episode._links.self.href || ''
+          },
+          show: {
+              href: episode._links.show.href || ''
+          }
+      }
+    }
+    }
 }

@@ -40,9 +40,22 @@ export class ShowDetailsComponent implements OnInit {
           this.showDetails = data ? this.APIcallsService.transformShow(data) : undefined;
           console.log('showDetails:', this.showDetails);
           this.modifyJson();
+        },
+        (error) => {
+          console.error('Error fetching show details:', error);
+          // Handle the error (e.g., display an error message)
         }
-      );
+      );      
     });
+  }
+
+  ngOnDestroy() {
+    if (this.paramsSub) {
+      this.paramsSub.unsubscribe();
+    }
+    if (this.httpSub) {
+      this.httpSub.unsubscribe();
+    }
   }
   
 }

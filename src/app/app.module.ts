@@ -10,10 +10,15 @@ import { HttpClientModule } from '@angular/common/http';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { GoBackButtonComponent } from './components/go-back-button/go-back-button.component';
+import { EpisodesComponent } from './components/episodes/episodes.component';
+import { RouterModule } from '@angular/router';
+import { routes } from './app-routing.module';
+
 
 @NgModule({
-  declarations: [AppComponent, HomepageComponent, ShowDetailsComponent, NavbarComponent, FooterComponent, GoBackButtonComponent],
-  imports: [BrowserModule, AppRoutingModule, FormsModule, HttpClientModule, ],
+  declarations: [AppComponent, HomepageComponent, ShowDetailsComponent, NavbarComponent, FooterComponent, GoBackButtonComponent, EpisodesComponent],
+  imports: [BrowserModule, AppRoutingModule, FormsModule, HttpClientModule, RouterModule.forRoot(routes)],
+  exports: [RouterModule],
   providers: [],
   bootstrap: [AppComponent],
 })
