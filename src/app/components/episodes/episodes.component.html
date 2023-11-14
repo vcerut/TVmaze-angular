@@ -1,19 +1,27 @@
-<!-- episodes.component.html -->
-
-    <h2>Episodes List</h2>
-    {{showId}}
-    
-    <ul>
-      <li *ngFor="let episode of showEpisodes">
-        <h3>{{ episode.name }}</h3>
-        <p>Season: {{ episode.season }}, Episode: {{ episode.number }}</p>
-        <p>Airdate: {{ episode.airdate }}, Airtime: {{ episode.airtime }}</p>
-        <p>Runtime: {{ episode.runtime }} minutes</p>
-        <p>Rating: {{ episode.rating.average }}</p>
-        <img [src]="episode.image.medium" alt="Episode Image" />
-        <p>{{ episode.summary }}</p>
-        <!-- Add more details as needed -->
-      </li>
-    </ul>
-
+<div class="grid grid-cols-5">
+  <h2 class="col-start-3 col-span-1 text-4xl font-extrabold pb-5">Episodes List</h2>
   
+  <div *ngFor="let episode of showEpisodes" class="col-span-3 col-start-2 mb-3">
+    <div
+      class="flex flex-row items-center bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100 dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700"
+    >
+    <img [src]="episode.image.medium" class="m-3 rounded-lg w-fit"/>
+      <div class="flex flex-col justify-between p-4 leading-normal">
+        <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">
+          S{{ episode.season }}E{{ episode.number }}
+        </p>
+        <h5
+          class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white"
+        >
+          {{episode.name}}
+        </h5>
+        <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">
+          {{episode.summary}}
+        </p>
+        <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">
+          Rating: {{episode.rating.average}}
+        </p>
+      </div>
+    </div>
+  </div>
+</div>

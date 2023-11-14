@@ -16,7 +16,7 @@ export class APIcallsService {
     const apiUrl = `https://api.tvmaze.com/shows/${showId}/episodes`;
     return this.http.get<ShowEpisode[]>(apiUrl);
   }
-    // ------------------------
+  // ------------------------
 
   // chiamata per dettagli serie
   getShowDetails(showId: number): Observable<Show> {
@@ -36,7 +36,7 @@ export class APIcallsService {
       )
     );
   }
-  
+
   // ------------------------
 
   transformShow(show: any) {
@@ -101,7 +101,7 @@ export class APIcallsService {
     };
   }
 
-  transformEpisode (episode: any) {
+  transformEpisode(episode: any) {
     return {
       id: episode.id || 0,
       url: episode.url || '',
@@ -114,21 +114,21 @@ export class APIcallsService {
       airstamp: episode.airstamp || '',
       runtime: episode.runtime || 0,
       rating: {
-          average:episode.rating.average || 0
+        average: episode.rating.average || 0,
       },
       image: {
-          medium: episode.image.medium || '',
-          original: episode.image.original || ''
+        medium: episode.image.medium || '',
+        original: episode.image.original || '',
       },
       summary: episode.summary || '',
       _links: {
-          self: {
-              href: episode._links.self.href || ''
-          },
-          show: {
-              href: episode._links.show.href || ''
-          }
-      }
-    }
-    }
+        self: {
+          href: episode._links.self.href || '',
+        },
+        show: {
+          href: episode._links.show.href || '',
+        },
+      },
+    };
+  }
 }

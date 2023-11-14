@@ -19,6 +19,7 @@ export class EpisodesComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
+
     this.route.params.subscribe((params) => {
       console.log('PARAMS PRIMA ASSEGNAZIONE ID', params);
       console.log('ID PRIMA ASSEGNAZIONE ID', this.showId);
@@ -37,6 +38,7 @@ export class EpisodesComponent implements OnInit {
           this.showEpisodes = data.map((data) =>
             this.APIcallsService.transformEpisode(data)
           );
+          this.modifyJson();
           console.log('Episodes: ', this.showEpisodes);
         },
         (error) => {
@@ -45,4 +47,15 @@ export class EpisodesComponent implements OnInit {
       );
     });
   }
+
+  modifyJson(): void {
+    if(this.showEpisodes){
+      this.showEpisodes.forEach((episode) => {
+        if(episode.summary) {
+          episode.summary = episode.summary.replace(/<\/?[A-Za-z]>/gi, "");
+        }
+      })
+    }
+  }
 }
+
