@@ -1,5 +1,8 @@
-<div class="container mx-auto mt-2">
+<div class="container mx-auto mt-2 flex flex-row justify-center gap-11">
     <app-go-back-button></app-go-back-button>
+    <h2 class="col-start-3 col-span-1 text-4xl font-extrabold">
+        Cast
+    </h2>
 </div>
 
 <div class="container mt-3 mx-auto flex flex-row flex-wrap gap-1 justify-center">
@@ -7,7 +10,7 @@
     <div
       class="max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700"
     >
-      <img class="rounded-md mx-auto mt-1" [src]="cast.person.image.medium" alt="" />
+      <img class="rounded-md mx-auto mt-1" [src]="cast.character.image.medium" alt="" />
       <div class="p-2">
           <div class="container flex flex-col text-center">
               <h5
@@ -19,11 +22,6 @@
                 as {{cast.character.name}}
               </p>
           </div>
-
-        <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">
-          Here are the biggest enterprise technology acquisitions of 2021 so
-          far, in reverse chronological order.
-        </p>
         
       </div>
     </div>

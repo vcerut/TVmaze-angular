@@ -1,13 +1,14 @@
-<div class="grid grid-cols-5">
-  <h2 class="col-start-3 col-span-1 text-4xl font-extrabold pb-5">
+<div class="container mx-auto mt-2 flex flex-row justify-center gap-11">
+  <app-go-back-button></app-go-back-button>
+  <h2 class="col-start-3 col-span-1 text-4xl font-extrabold">
     Episodes List
   </h2>
 </div>
-
-<div *ngFor="let episode of showEpisodes" class="col-span-3 col-start-2 mb-3">
+<div class="grid grid-cols-5">
+  <div *ngFor="let episode of showEpisodes" class="col-span-3 col-start-2 mb-3">
   <div
     class="flex flex-row items-center bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100 dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700"
-  >
+    >
     <img [src]="episode.image.medium" class="m-3 rounded-lg w-fit" />
     <div class="flex flex-col justify-between p-4 leading-normal">
       <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">
@@ -15,7 +16,7 @@
       </p>
       <h5
         class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white"
-      >
+        >
         {{ episode.name }}
       </h5>
       <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">
@@ -26,4 +27,6 @@
       </p>
     </div>
   </div>
+</div>
+
 </div>

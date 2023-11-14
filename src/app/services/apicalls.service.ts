@@ -71,13 +71,13 @@ export class APIcallsService {
         weight: 0,
         network: {
           id: 0,
-          name: show.network.name,
+          name: show.network?.name || '-',
           country: {
-            name: show.network.country.name,
+            name: show.network?.country?.name || '-',
             code: '',
             timezone: '',
           },
-          officialSite: show.network.officialSite,
+          officialSite: show.network?.officialSite || '-',
         },
         webChannel: 0,
         dvdCountry: 0,
@@ -153,8 +153,8 @@ export class APIcallsService {
         deathday: cast.person.deathday || '',
         gender: cast.person.gender || '',
         image: {
-          medium: cast.person.image.medium || '',
-          original: cast.person.image.original || '',
+          medium: cast.person.image?.medium || '',
+          original: cast.person.image?.original || '',
         },
         updated: cast.person.updated || '',
         _links: {
