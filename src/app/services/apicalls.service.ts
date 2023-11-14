@@ -1,8 +1,9 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable, tap } from 'rxjs';
-import { Show } from '../show.model';
-import { ShowEpisode } from '../show-episode.model';
+import { Show } from '../models/show.model';
+import { ShowEpisode } from '../models/show-episode.model';
+import { Cast } from '../models/cast.model';
 import { map } from 'rxjs';
 
 @Injectable({
@@ -36,7 +37,12 @@ export class APIcallsService {
       )
     );
   }
-
+  // ------------------------
+  // chiamata per lista cast
+  getCast(showId: number): Observable<any> {
+    const apiUrl = `https://api.tvmaze.com/shows/${showId}/cast`;
+    return this.http.get<Cast[]>(apiUrl);
+  }
   // ------------------------
 
   transformShow(show: any) {
@@ -129,6 +135,50 @@ export class APIcallsService {
           href: episode._links.show.href || '',
         },
       },
+    };
+  }
+
+  transformCast(cast: any) {
+    return {
+      person: {
+        id: cast.person.id || 0,
+        url: cast.person.url || '',
+        name: cast.person.name || '',
+        country: {
+          name: cast.person.name || '',
+          code: cast.person.code || '',
+          timezone: cast.person.timezone || '',
+        },
+        birthday: cast.person.birthday || '',
+        deathday: cast.person.deathday || '',
+        gender: cast.person.gender || '',
+        image: {
+          medium: cast.person.image.medium || '',
+          original: cast.person.image.original || '',
+        },
+        updated: cast.person.updated || '',
+        _links: {
+          self: {
+            href: cast.person._links.self.href || '',
+          },
+        },
+      },
+      character: {
+        id: cast.character.id || 0,
+        url: cast.character.url || '',
+        name: cast.character.name || '',
+        image: {
+          medium: cast.character.image && cast.character.image.medium ? cast.character.image.medium : '',
+          original: cast.character.image && cast.character.image.original ? cast.character.image.original : '',
+        },
+        _links: {
+          self: {
+            href: cast.character._links.self.href || '',
+          },
+        },
+      },
+      self: cast.self || false,
+      voice: cast.voice || false,
     };
   }
 }

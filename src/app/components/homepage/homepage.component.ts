@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { APIcallsService } from 'src/app/services/apicalls.service';
-import { Show } from 'src/app/show.model';
+import { Show } from 'src/app/models/show.model';
 
 @Component({
   selector: 'app-homepage',

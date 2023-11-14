@@ -2,42 +2,58 @@
   <div
     *ngIf="showDetails"
     class="grid grid-cols-6 grid-rows-5 flex-row mx-auto gap-3 justify-center content-center"
-    >
+  >
     <h2 class="text-5xl font-thin col-start-2 row-start-1 row-span-1">
       {{ showDetails.show.name }}
     </h2>
-      <div class="col-span-1 col-start-2 row-span-1 row-start-2">
-        <app-go-back-button></app-go-back-button>
-        <a [routerLink]="['/episodes', showDetails.show.id]">
-    <button
-      type="button"
-      class="focus:outline-none text-[#3c948b] bg-white hover:bg-[#f8f8f8] border-2 border-[#3c948b] focus:ring-4 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 hover:ease-in duration-150"
-    >
-      Episodes
-    </button>
-</a>
+    <div class="col-span-2 col-start-2 row-span-1 row-start-2">
+      <app-go-back-button></app-go-back-button>
+      <a [routerLink]="['/episodes', showDetails.show.id]">
+        <button
+          type="button"
+          class="focus:outline-none text-[#3c948b] bg-white hover:bg-[#f8f8f8] border-2 border-[#3c948b] focus:ring-4 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 hover:ease-in duration-150"
+        >
+          Episodes
+        </button>
+      </a>
+      <a [routerLink]="['/cast', showDetails.show.id]">
+        <button
+          type="button"
+          class="focus:outline-none text-[#3c948b] bg-white hover:bg-[#f8f8f8] border-2 border-[#3c948b] focus:ring-4 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 hover:ease-in duration-150"
+        >
+          Cast
+        </button>
+      </a>
+    </div>
 
-      </div>
-      
     <div class="grid col-span-1 col-start-2 row-start-3 row-span-3 flex-col">
       <img [src]="showDetails.show.image.medium" />
     </div>
     <div class="grid flex-col col-span-2 row-span-1 row-start-3">
       <p class="">{{ showDetails.show.summary }}</p>
     </div>
-    <div class="grid col-span-1 col-start-5 row-start-3 row-span-2 bg-[#f7f7f7] p-5">
-      <h3 class="text-xl">
-        Show Info
-      </h3>
+    <div
+      class="grid col-span-1 col-start-5 row-start-3 row-span-2 bg-[#f7f7f7] p-5"
+    >
+      <h3 class="text-xl">Show Info</h3>
       <p class="text-sm">
-        <b>Network: </b> {{showDetails.show.network.name}} ({{showDetails.show.network.country.name}})
+        <b>Network: </b> {{ showDetails.show.network.name }} ({{
+          showDetails.show.network.country.name
+        }})
       </p>
-      <p> <b>Schedule: </b> {{showDetails.show.schedule.days}} (~ {{showDetails.show.averageRuntime}} minutes) </p>
-      <p> <b>Status: </b> {{showDetails.show.status}} </p>
-      <p> <b>Show Type: </b> {{showDetails.show.type}} </p>
-      <p> <b>Genres: </b> {{showDetails.show.genres}} </p>
-      <p> <b>Official site: </b> <a href="{{showDetails.show.network.officialSite}}">{{showDetails.show.network.officialSite}}</a> </p>
+      <p>
+        <b>Schedule: </b> {{ showDetails.show.schedule.days }} (~
+        {{ showDetails.show.averageRuntime }} minutes)
+      </p>
+      <p><b>Status: </b> {{ showDetails.show.status }}</p>
+      <p><b>Show Type: </b> {{ showDetails.show.type }}</p>
+      <p><b>Genres: </b> {{ showDetails.show.genres }}</p>
+      <p>
+        <b>Official site: </b>
+        <a href="{{ showDetails.show.network.officialSite }}">{{
+          showDetails.show.network.officialSite
+        }}</a>
+      </p>
     </div>
   </div>
-
 </div>

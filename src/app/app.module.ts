@@ -12,10 +12,11 @@ import { GoBackButtonComponent } from './components/go-back-button/go-back-butto
 import { EpisodesComponent } from './components/episodes/episodes.component';
 import { RouterModule } from '@angular/router';
 import { routes } from './app-routing.module';
+import { CastComponent } from './components/cast/cast.component';
 
 
 @NgModule({
-  declarations: [AppComponent, HomepageComponent, ShowDetailsComponent, NavbarComponent, GoBackButtonComponent, EpisodesComponent],
+  declarations: [AppComponent, HomepageComponent, ShowDetailsComponent, NavbarComponent, GoBackButtonComponent, EpisodesComponent, CastComponent],
   imports: [BrowserModule, AppRoutingModule, FormsModule, HttpClientModule, RouterModule.forRoot(routes)],
   exports: [RouterModule],
   providers: [],
