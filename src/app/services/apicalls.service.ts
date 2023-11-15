@@ -38,9 +38,17 @@ export class APIcallsService {
     );
   }
   // ------------------------
+
   // chiamata per lista cast
   getCast(showId: number): Observable<any> {
     const apiUrl = `https://api.tvmaze.com/shows/${showId}/cast`;
+    return this.http.get<Cast[]>(apiUrl);
+  }
+  // ------------------------
+  
+  // chiamata per lista guest cast
+  getGuestCast(showId: number): Observable<any> {
+    const apiUrl = `https://api.tvmaze.com/episodes/${showId}/guestcast`;
     return this.http.get<Cast[]>(apiUrl);
   }
   // ------------------------

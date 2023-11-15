@@ -13,10 +13,11 @@ import { EpisodesComponent } from './components/episodes/episodes.component';
 import { RouterModule } from '@angular/router';
 import { routes } from './app-routing.module';
 import { CastComponent } from './components/cast/cast.component';
+import { GuestCastComponent } from './guest-cast/guest-cast.component';
 
 
 @NgModule({
-  declarations: [AppComponent, HomepageComponent, ShowDetailsComponent, NavbarComponent, GoBackButtonComponent, EpisodesComponent, CastComponent],
+  declarations: [AppComponent, HomepageComponent, ShowDetailsComponent, NavbarComponent, GoBackButtonComponent, EpisodesComponent, CastComponent, GuestCastComponent],
   imports: [BrowserModule, AppRoutingModule, FormsModule, HttpClientModule, RouterModule.forRoot(routes)],
   exports: [RouterModule],
   providers: [],

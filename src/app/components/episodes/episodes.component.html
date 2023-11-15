@@ -1,10 +1,26 @@
 <div class="container mx-auto mt-2 flex flex-row justify-center gap-11">
   <app-go-back-button></app-go-back-button>
-  <h2 class="col-start-3 col-span-1 text-4xl font-extrabold">
-    Episodes List
-  </h2>
+  <a [routerLink]="['/details', showId]">
+    <button
+      type="button"
+      class="focus:outline-none text-[#3c948b] bg-white hover:bg-[#f8f8f8] border-2 border-[#3c948b] focus:ring-4 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 hover:ease-in duration-150"
+    >
+      Details
+    </button>
+  </a>
+  <a [routerLink]="['/cast', showId]">
+    <button
+      type="button"
+      class="focus:outline-none text-[#3c948b] bg-white hover:bg-[#f8f8f8] border-2 border-[#3c948b] focus:ring-4 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 hover:ease-in duration-150"
+    >
+      Cast
+    </button>
+  </a>
 </div>
-<div class="grid grid-cols-5">
+<h2 class="col-start-3 col-span-1 text-4xl font-extrabold text-center">
+  Episodes List
+</h2>
+<div class="grid grid-cols-5 mt-3">
   <div *ngFor="let episode of showEpisodes" class="col-span-3 col-start-2 mb-3">
   <div
     class="flex flex-row items-center bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100 dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700"
