@@ -14,10 +14,11 @@ import { RouterModule } from '@angular/router';
 import { routes } from './app-routing.module';
 import { CastComponent } from './components/cast/cast.component';
 import { GuestCastComponent } from './guest-cast/guest-cast.component';
+import { GalleryComponent } from './components/gallery/gallery.component';
 
 
 @NgModule({
-  declarations: [AppComponent, HomepageComponent, ShowDetailsComponent, NavbarComponent, GoBackButtonComponent, EpisodesComponent, CastComponent, GuestCastComponent],
+  declarations: [AppComponent, HomepageComponent, ShowDetailsComponent, NavbarComponent, GoBackButtonComponent, EpisodesComponent, CastComponent, GuestCastComponent, GalleryComponent],
   imports: [BrowserModule, AppRoutingModule, FormsModule, HttpClientModule, RouterModule.forRoot(routes)],
   exports: [RouterModule],
   providers: [],

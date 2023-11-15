@@ -4,6 +4,7 @@ import { Observable, tap } from 'rxjs';
 import { Show } from '../models/show.model';
 import { ShowEpisode } from '../models/show-episode.model';
 import { Cast } from '../models/cast.model';
+import { Image } from '../models/image.model';
 import { map } from 'rxjs';
 
 @Injectable({
@@ -52,6 +53,14 @@ export class APIcallsService {
     return this.http.get<Cast[]>(apiUrl);
   }
   // ------------------------
+  
+  // chiamata per immagini
+  getGallery(showId: number): Observable<any>{
+    const apiUrl = `https://api.tvmaze.com/shows/${showId}/images`;
+    return this.http.get<any>(apiUrl);
+  }
+  // ------------------------
+  
 
   transformShow(show: any) {
     return {
@@ -188,5 +197,26 @@ export class APIcallsService {
       self: cast.self || false,
       voice: cast.voice || false,
     };
+  }
+
+  transformImage(image: any) {
+    return {
+      id: image.id || 0,
+      type: image.type || '',
+      main: image.main || false,
+      resolutions: {
+        original: {
+          url: image.resolutions.original.url || '',
+          width: image.resolutions.original.width || 0,
+          height: image.resolutions.original.height || 0,
+        },
+        medium: {
+          url: image.resolutions.medium.url || '',
+          width: image.resolutions.medium.width || 0,
+          height: image.resolutions.medium.height || 0,
+        },
+      },
+    }
+    
   }
 }
