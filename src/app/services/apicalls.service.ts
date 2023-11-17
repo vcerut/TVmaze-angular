@@ -13,6 +13,47 @@ import { map } from 'rxjs';
 export class APIcallsService {
   private showId: number = 0;
 
+  
+  constructor(private http: HttpClient) {}
+  
+  // chiamata per lista serie tv
+  searchShows(query: string): Observable<any> {
+    return this.http.get(`https://api.tvmaze.com/search/shows?q=${query}`).pipe(
+      tap(
+        (data) => console.log('API Response:', data),
+        (error) => console.error('API Error:', error)
+      )
+      );
+    }
+    // ------------------------
+    
+    //chiamata per lista attori
+    searchPeople(query: string): Observable<any> {
+      return this.http.get(`https://api.tvmaze.com/search/people?q=${query}`)
+    }
+    // ------------------------
+    
+    // chiamata per lista cast
+    getCast(showId: number): Observable<any> {
+      const apiUrl = `https://api.tvmaze.com/shows/${showId}/cast`;
+      return this.http.get<Cast[]>(apiUrl);
+    }
+    // ------------------------
+    
+    // chiamata per lista guest cast
+    getGuestCast(showId: number): Observable<any> {
+      const apiUrl = `https://api.tvmaze.com/episodes/${showId}/guestcast`;
+    return this.http.get<Cast[]>(apiUrl);
+  }
+  // ------------------------
+  
+  // chiamata per immagini
+  getGallery(showId: number): Observable<any>{
+    const apiUrl = `https://api.tvmaze.com/shows/${showId}/images`;
+    return this.http.get<any>(apiUrl);
+  }
+  // ------------------------
+  
   //chiamata per lista episodi
   getEpisodesList(showId: number): Observable<ShowEpisode[]> {
     const apiUrl = `https://api.tvmaze.com/shows/${showId}/episodes`;
@@ -26,42 +67,7 @@ export class APIcallsService {
     return this.http.get<Show>(apiUrl);
   }
   // ------------------------
-
-  constructor(private http: HttpClient) {}
-
-  // chiamata per lista serie tv
-  searchShows(query: string): Observable<any> {
-    return this.http.get(`https://api.tvmaze.com/search/shows?q=${query}`).pipe(
-      tap(
-        (data) => console.log('API Response:', data),
-        (error) => console.error('API Error:', error)
-      )
-    );
-  }
-  // ------------------------
-
-  // chiamata per lista cast
-  getCast(showId: number): Observable<any> {
-    const apiUrl = `https://api.tvmaze.com/shows/${showId}/cast`;
-    return this.http.get<Cast[]>(apiUrl);
-  }
-  // ------------------------
   
-  // chiamata per lista guest cast
-  getGuestCast(showId: number): Observable<any> {
-    const apiUrl = `https://api.tvmaze.com/episodes/${showId}/guestcast`;
-    return this.http.get<Cast[]>(apiUrl);
-  }
-  // ------------------------
-  
-  // chiamata per immagini
-  getGallery(showId: number): Observable<any>{
-    const apiUrl = `https://api.tvmaze.com/shows/${showId}/images`;
-    return this.http.get<any>(apiUrl);
-  }
-  // ------------------------
-  
-
   transformShow(show: any) {
     return {
       score: 0,
@@ -140,8 +146,8 @@ export class APIcallsService {
         average: episode.rating.average || 0,
       },
       image: {
-        medium: episode.image.medium || '',
-        original: episode.image.original || '',
+        medium: episode.image?.medium || '',
+        original: episode.image?.original || '',
       },
       summary: episode.summary || '',
       _links: {

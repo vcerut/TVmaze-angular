@@ -6,9 +6,13 @@ import { ShowDetailsComponent } from './components/show-details/show-details.com
 import { EpisodesComponent } from './components/episodes/episodes.component';
 import { CastComponent } from './components/cast/cast.component';
 import { GalleryComponent } from './components/gallery/gallery.component';
+import { SearchShowsComponent } from './components/search-shows/search-shows.component';
+import { SearchPeopleComponent } from './components/search-people/search-people.component';
 
 export const routes: Routes = [
   { path: 'home', component: HomepageComponent },
+  { path: 'searchshow', component: SearchShowsComponent },
+  { path: 'searchpeople', component: SearchPeopleComponent },
   { path: 'details/:id', component: ShowDetailsComponent },
   { path: 'episodes/:id', component: EpisodesComponent },
   { path: 'cast/:id', component: CastComponent },
