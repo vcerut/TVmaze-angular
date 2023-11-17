@@ -1,0 +1,24 @@
+<div class="container mx-auto mt-10">
+  <div *ngIf="personDetails">
+    <h2 class="text-5xl font-thin pb-5">
+      {{ personDetails.person.name }}
+    </h2>
+    <div class="flex flex-row items-center">
+        <div class="w-1/4"><img [src]="personDetails.person.image.medium" class="" /></div>
+        <div
+          class="bg-gray-200 p-4 w-1/2 h-fit"
+        >
+        <p>
+            Birthday: {{personDetails.person.birthday}}
+        </p>
+        <p *ngIf="personDetails.person.deathday">
+            Deathday: {{personDetails.person.deathday}}
+        </p>
+        <p>
+            Born in: {{personDetails.person.country.name}}
+        </p>
+
+        </div>
+    </div>
+  </div>
+</div>

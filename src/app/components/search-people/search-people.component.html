@@ -1,4 +1,7 @@
 <div class="container mx-auto mt-3">
+    <h2 class="text-2xl font-semibold text-gray-500 mb-3">
+        Search people
+    </h2>
     <form>
       <label
         for="default-search"
@@ -31,7 +34,7 @@
           type="search"
           id="default-search"
           class="block w-full p-4 pl-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50"
-          placeholder="Cerca una serie, film, attore..."
+          placeholder="Insert actor name here..."
           required
         />
         <button
@@ -47,7 +50,7 @@
 
   <div  class="grid grid-cols-3 gap-3 mt-4">
     <div *ngFor="let person of people">
-      <!-- <a [routerLink]="'/details/' + person?.person?.id"> -->
+      <a [routerLink]="'/people/' + person?.person?.id">
         <div class="flex items-center bg-white border border-gray-200 rounded-lg shadow md:flex-row md:max-w-xl hover:bg-gray-100 dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700">
           <img
             [src]="person.person.image?.medium"
@@ -61,7 +64,7 @@
             </h5>
           </div>
         </div>
-      <!-- </a> -->
+      </a>
     </div>
   </div>
 </div>

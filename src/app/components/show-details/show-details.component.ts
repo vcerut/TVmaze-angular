@@ -6,10 +6,9 @@ import { APIcallsService } from 'src/app/services/apicalls.service';
 @Component({
   selector: 'app-show-details',
   templateUrl: './show-details.component.html',
-  styleUrls: ['./show-details.component.scss']
+  styleUrls: ['./show-details.component.scss'],
 })
 export class ShowDetailsComponent implements OnInit {
-
   showDetails: Show | undefined;
   showId: number = -1;
   paramsSub: any;
@@ -25,10 +24,12 @@ export class ShowDetailsComponent implements OnInit {
    */
   modifyJson() {
     if (this.showDetails?.show?.summary) {
-      this.showDetails.show.summary = this.showDetails.show.summary.replace(/<\/?[A-Za-z]>/gi, "");
+      this.showDetails.show.summary = this.showDetails.show.summary.replace(
+        /<\/?[A-Za-z]>/gi,
+        ''
+      );
     }
   }
-  
 
   ngOnInit() {
     this.paramsSub = this.route.params.subscribe((params) => {
@@ -37,7 +38,9 @@ export class ShowDetailsComponent implements OnInit {
       this.httpSub = this.APIcallsService.getShowDetails(this.showId).subscribe(
         (data: any) => {
           console.log('API Response:', data);
-          this.showDetails = data ? this.APIcallsService.transformShow(data) : undefined;
+          this.showDetails = data
+            ? this.APIcallsService.transformShow(data)
+            : undefined;
           console.log('showDetails:', this.showDetails);
           this.modifyJson();
         },
@@ -45,7 +48,7 @@ export class ShowDetailsComponent implements OnInit {
           console.error('Error fetching show details:', error);
           // Handle the error (e.g., display an error message)
         }
-      );      
+      );
     });
   }
 
@@ -57,5 +60,4 @@ export class ShowDetailsComponent implements OnInit {
       this.httpSub.unsubscribe();
     }
   }
-  
 }

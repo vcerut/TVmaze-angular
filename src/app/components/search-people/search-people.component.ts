@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { APIcallsService } from 'src/app/services/apicalls.service';
-import { Person } from 'src/app/models/query-person.model';
+import { Person } from 'src/app/models/person.model';
 
 @Component({
   selector: 'app-search-people',

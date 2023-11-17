@@ -1,4 +1,7 @@
 <div class="container mx-auto mt-3">
+    <h2 class="text-2xl font-semibold text-gray-500 mb-3">
+        Search shows
+    </h2>
     <form>
       <label
         for="default-search"
@@ -31,7 +34,7 @@
           type="search"
           id="default-search"
           class="block w-full p-4 pl-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50"
-          placeholder="Cerca una serie, film, attore..."
+          placeholder="Insert show name here..."
           required
         />
         <button
@@ -43,8 +46,6 @@
         </button>
       </div>
     </form>
-
-
   <div  class="grid grid-cols-3 gap-3 mt-4">
     <div *ngFor="let show of shows">
       <a [routerLink]="'/details/' + show?.show?.id">

@@ -8,11 +8,13 @@ import { CastComponent } from './components/cast/cast.component';
 import { GalleryComponent } from './components/gallery/gallery.component';
 import { SearchShowsComponent } from './components/search-shows/search-shows.component';
 import { SearchPeopleComponent } from './components/search-people/search-people.component';
+import { PeopleDetailsComponent } from './components/people-details/people-details.component';
 
 export const routes: Routes = [
   { path: 'home', component: HomepageComponent },
   { path: 'searchshow', component: SearchShowsComponent },
   { path: 'searchpeople', component: SearchPeopleComponent },
+  { path: 'people/:id', component: PeopleDetailsComponent},
   { path: 'details/:id', component: ShowDetailsComponent },
   { path: 'episodes/:id', component: EpisodesComponent },
   { path: 'cast/:id', component: CastComponent },

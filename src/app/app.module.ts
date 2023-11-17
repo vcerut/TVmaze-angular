@@ -20,10 +20,11 @@ import {ShowDetailsButtonComponent} from './components/show-details-button/show-
 import { GalleryButtonComponent } from './components/gallery-button/gallery-button.component';
 import { CastButtonComponent } from './components/cast-button/cast-button.component';
 import { SearchShowsComponent } from './components/search-shows/search-shows.component';
-import { SearchPeopleComponent } from './components/search-people/search-people.component'
+import { SearchPeopleComponent } from './components/search-people/search-people.component';
+import { PeopleDetailsComponent } from './components/people-details/people-details.component'
 
 @NgModule({
-  declarations: [AppComponent, HomepageComponent, ShowDetailsComponent, NavbarComponent, GoBackButtonComponent, EpisodesComponent, CastComponent, GuestCastComponent, GalleryComponent, EpisodesButtonComponent, ShowDetailsButtonComponent, GalleryButtonComponent, CastButtonComponent, SearchShowsComponent, SearchPeopleComponent],
+  declarations: [AppComponent, HomepageComponent, ShowDetailsComponent, NavbarComponent, GoBackButtonComponent, EpisodesComponent, CastComponent, GuestCastComponent, GalleryComponent, EpisodesButtonComponent, ShowDetailsButtonComponent, GalleryButtonComponent, CastButtonComponent, SearchShowsComponent, SearchPeopleComponent, PeopleDetailsComponent],
   imports: [BrowserModule, AppRoutingModule, FormsModule, HttpClientModule, RouterModule],
   exports: [RouterModule],
   providers: [],
