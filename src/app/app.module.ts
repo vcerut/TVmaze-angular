@@ -15,11 +15,14 @@ import { routes } from './app-routing.module';
 import { CastComponent } from './components/cast/cast.component';
 import { GuestCastComponent } from './components/guest-cast/guest-cast.component';
 import { GalleryComponent } from './components/gallery/gallery.component';
-
+import { EpisodesButtonComponent } from './components/episodes-button/episodes-button.component';
+import {ShowDetailsButtonComponent} from './components/show-details-button/show-details-button.component';
+import { GalleryButtonComponent } from './components/gallery-button/gallery-button.component';
+import { CastButtonComponent } from './components/cast-button/cast-button.component'
 
 @NgModule({
-  declarations: [AppComponent, HomepageComponent, ShowDetailsComponent, NavbarComponent, GoBackButtonComponent, EpisodesComponent, CastComponent, GuestCastComponent, GalleryComponent, ],
-  imports: [BrowserModule, AppRoutingModule, FormsModule, HttpClientModule, RouterModule.forRoot(routes)],
+  declarations: [AppComponent, HomepageComponent, ShowDetailsComponent, NavbarComponent, GoBackButtonComponent, EpisodesComponent, CastComponent, GuestCastComponent, GalleryComponent, EpisodesButtonComponent, ShowDetailsButtonComponent, GalleryButtonComponent, CastButtonComponent],
+  imports: [BrowserModule, AppRoutingModule, FormsModule, HttpClientModule, RouterModule],
   exports: [RouterModule],
   providers: [],
   bootstrap: [AppComponent],
