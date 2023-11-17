@@ -6,12 +6,54 @@ import { ShowEpisode } from '../models/show-episode.model';
 import { Cast } from '../models/cast.model';
 import { Image } from '../models/image.model';
 import { map } from 'rxjs';
+import { Person } from '../models/person.model';
 
 @Injectable({
   providedIn: 'root',
 })
 export class APIcallsService {
   private showId: number = 0;
+  private actorId: number = 0;
+
+  constructor(private http: HttpClient) {}
+
+  // chiamata per lista serie tv
+  searchShows(query: string): Observable<any> {
+    return this.http.get(`https://api.tvmaze.com/search/shows?q=${query}`).pipe(
+      tap(
+        (data) => console.log('API Response:', data),
+        (error) => console.error('API Error:', error)
+      )
+    );
+  }
+  // ------------------------
+
+  //chiamata per lista attori
+  searchPeople(query: string): Observable<any> {
+    return this.http.get(`https://api.tvmaze.com/search/people?q=${query}`);
+  }
+  // ------------------------
+
+  // chiamata per lista cast
+  getCast(showId: number): Observable<any> {
+    const apiUrl = `https://api.tvmaze.com/shows/${showId}/cast`;
+    return this.http.get<Cast[]>(apiUrl);
+  }
+  // ------------------------
+
+  // chiamata per lista guest cast
+  getGuestCast(showId: number): Observable<any> {
+    const apiUrl = `https://api.tvmaze.com/episodes/${showId}/guestcast`;
+    return this.http.get<Cast[]>(apiUrl);
+  }
+  // ------------------------
+
+  // chiamata per immagini
+  getGallery(showId: number): Observable<any> {
+    const apiUrl = `https://api.tvmaze.com/shows/${showId}/images`;
+    return this.http.get<any>(apiUrl);
+  }
+  // ------------------------
 
   //chiamata per lista episodi
   getEpisodesList(showId: number): Observable<ShowEpisode[]> {
@@ -27,40 +69,12 @@ export class APIcallsService {
   }
   // ------------------------
 
-  constructor(private http: HttpClient) {}
-
-  // chiamata per lista serie tv
-  searchShows(query: string): Observable<any> {
-    return this.http.get(`https://api.tvmaze.com/search/shows?q=${query}`).pipe(
-      tap(
-        (data) => console.log('API Response:', data),
-        (error) => console.error('API Error:', error)
-      )
-    );
+  //chiamata per dettaglio attore
+  getActorDetails(actorId: number): Observable<Person> {
+    const apiUrl = `https://api.tvmaze.com/people/${actorId}`;
+    return this.http.get<Person>(apiUrl);
   }
   // ------------------------
-
-  // chiamata per lista cast
-  getCast(showId: number): Observable<any> {
-    const apiUrl = `https://api.tvmaze.com/shows/${showId}/cast`;
-    return this.http.get<Cast[]>(apiUrl);
-  }
-  // ------------------------
-  
-  // chiamata per lista guest cast
-  getGuestCast(showId: number): Observable<any> {
-    const apiUrl = `https://api.tvmaze.com/episodes/${showId}/guestcast`;
-    return this.http.get<Cast[]>(apiUrl);
-  }
-  // ------------------------
-  
-  // chiamata per immagini
-  getGallery(showId: number): Observable<any>{
-    const apiUrl = `https://api.tvmaze.com/shows/${showId}/images`;
-    return this.http.get<any>(apiUrl);
-  }
-  // ------------------------
-  
 
   transformShow(show: any) {
     return {
@@ -140,8 +154,8 @@ export class APIcallsService {
         average: episode.rating.average || 0,
       },
       image: {
-        medium: episode.image.medium || '',
-        original: episode.image.original || '',
+        medium: episode.image?.medium || '',
+        original: episode.image?.original || '',
       },
       summary: episode.summary || '',
       _links: {
@@ -185,8 +199,14 @@ export class APIcallsService {
         url: cast.character.url || '',
         name: cast.character.name || '',
         image: {
-          medium: cast.character.image && cast.character.image.medium ? cast.character.image.medium : '',
-          original: cast.character.image && cast.character.image.original ? cast.character.image.original : '',
+          medium:
+            cast.character.image && cast.character.image.medium
+              ? cast.character.image.medium
+              : '',
+          original:
+            cast.character.image && cast.character.image.original
+              ? cast.character.image.original
+              : '',
         },
         _links: {
           self: {
@@ -216,7 +236,35 @@ export class APIcallsService {
           height: image.resolutions.medium.height || 0,
         },
       },
-    }
-    
+    };
+  }
+
+  transformActor(actor: any) {
+    return {
+      score: 0,
+      person: {
+        id: actor.id || 0,
+        url: actor.url || '',
+        name: actor.name || '',
+        country: {
+          name: actor.country.name || '',
+          code: actor.country.code || '',
+          timezone: actor.country.timezone || '',
+        },
+        birthday: actor.birthday || '',
+        deathday: actor.deathday || '',
+        gender: actor.gender || '',
+        image: {
+          medium: actor.image?.medium || '',
+          original: actor.image?.original || '',
+        },
+        updated: actor.updated || 0,
+        _links: {
+          self: {
+            href: actor._links.self.href || '',
+          },
+        },
+      },
+    };
   }
 }

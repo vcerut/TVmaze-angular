@@ -18,10 +18,13 @@ import { GalleryComponent } from './components/gallery/gallery.component';
 import { EpisodesButtonComponent } from './components/episodes-button/episodes-button.component';
 import {ShowDetailsButtonComponent} from './components/show-details-button/show-details-button.component';
 import { GalleryButtonComponent } from './components/gallery-button/gallery-button.component';
-import { CastButtonComponent } from './components/cast-button/cast-button.component'
+import { CastButtonComponent } from './components/cast-button/cast-button.component';
+import { SearchShowsComponent } from './components/search-shows/search-shows.component';
+import { SearchPeopleComponent } from './components/search-people/search-people.component';
+import { PeopleDetailsComponent } from './components/people-details/people-details.component'
 
 @NgModule({
-  declarations: [AppComponent, HomepageComponent, ShowDetailsComponent, NavbarComponent, GoBackButtonComponent, EpisodesComponent, CastComponent, GuestCastComponent, GalleryComponent, EpisodesButtonComponent, ShowDetailsButtonComponent, GalleryButtonComponent, CastButtonComponent],
+  declarations: [AppComponent, HomepageComponent, ShowDetailsComponent, NavbarComponent, GoBackButtonComponent, EpisodesComponent, CastComponent, GuestCastComponent, GalleryComponent, EpisodesButtonComponent, ShowDetailsButtonComponent, GalleryButtonComponent, CastButtonComponent, SearchShowsComponent, SearchPeopleComponent, PeopleDetailsComponent],
   imports: [BrowserModule, AppRoutingModule, FormsModule, HttpClientModule, RouterModule],
   exports: [RouterModule],
   providers: [],
